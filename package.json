@@ -1,11 +1,13 @@
 {
-  "name": "meters-expense-tracker",
+  "name": "utility-price-calculator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node -r dotenv/config ./build/bin.js",
-    "build": "esbuild ./src/index.ts --bundle --outfile=./build/func.js --platform=node --target=esnext && esbuild ./src/bin.ts --bundle --outfile=./build/bin.js --platform=node --target=esnext",
+    "bin": "npm run build:bin && node -r dotenv/config ./build/bin.js",
+    "build": "npm run build:bin && npm run build:func",
+    "build:bin": "esbuild ./src/bin.ts --bundle --outfile=./build/bin.js --platform=node --target=esnext",
+    "build:func": "esbuild ./src/index.ts --bundle --outfile=./build/func.js --platform=node --target=esnext",
     "lint": "prettier . --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
